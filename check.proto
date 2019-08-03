@@ -1,0 +1,11 @@
+syntax = "proto3";
+
+package main;
+
+import "type.proto";
+
+message Check {
+    string field_1 = 1 [(main.rule1).type.one = "rule1.type.one", (main.rule1).type.two = "rule1.type.two"];
+    string field_2 = 2 [(main.rule2).type.one = "rule2.type.one", (main.rule2).type.two = "rule2.type.two"];
+    string field_3 = 3 [(main.rule2).type.two = "rule2.type.two", (main.rule2).type.one = "rule2.type.one"];
+}
