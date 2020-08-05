@@ -6,7 +6,7 @@ import (
 	pgs "github.com/lyft/protoc-gen-star"
 )
 
-//TODO: GO111MODULE=on go build -o bin/protoc-gen-sample
+//go:generate go build -o bin/protoc-gen-sample
 //go:generate protoc -I . type.proto --go_out=plugins=grpc:.
 //go:generate protoc -I . check.proto --plugin=bin/protoc-gen-sample --sample_out=:.
 

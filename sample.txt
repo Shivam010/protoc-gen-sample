@@ -1,3 +1,5 @@
 field_1 one:"rule1.type.one" two:"rule1.type.two" 
 field_2 two:"rule2.type.two" 
 field_3 one:"rule2.type.one" 
+field_4 one:"rule2.type.one" two:"rule2.type.two" 
+field_5 one:"rule2.type.one" two:"rule2.type.two" 

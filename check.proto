@@ -6,6 +6,10 @@ import "type.proto";
 
 message Check {
     string field_1 = 1 [(main.rule1).type.one = "rule1.type.one", (main.rule1).type.two = "rule1.type.two"];
+    // issue
     string field_2 = 2 [(main.rule2).type.one = "rule2.type.one", (main.rule2).type.two = "rule2.type.two"];
     string field_3 = 3 [(main.rule2).type.two = "rule2.type.two", (main.rule2).type.one = "rule2.type.one"];
+    // solution
+    string field_4 = 4 [(main.rule2).type = {one: "rule2.type.one" two: "rule2.type.two"}];
+    string field_5 = 5 [(main.rule2).type = {two: "rule2.type.two" one: "rule2.type.one"}];
 }
