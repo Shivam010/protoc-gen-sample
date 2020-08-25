@@ -30,15 +30,20 @@ func (m *cMod) Execute(targets map[string]pgs.File, packages map[string]pgs.Pack
 
 			for _, f := range msg.Fields() {
 
-				if f.Name().String() == "field_1" {
-					opt := f.Descriptor().GetOptions()
-					ext, _ := proto.GetExtension(opt, E_Rule1)
-					content += fmt.Sprintln(f.Name().String(), ext.(*Rule1).Type)
-				} else {
-					opt := f.Descriptor().GetOptions()
-					ext, _ := proto.GetExtension(opt, E_Rule2)
-					content += fmt.Sprintln(f.Name().String(), ext.(*Rule2).GetType())
+				opt := f.Descriptor().GetOptions()
+				res := &String{}
+
+				rule1, _ := proto.GetExtension(opt, E_Rule1)
+				if rule, ok := rule1.(*Rule1); ok && rule != nil {
+					res = rule.GetType()
 				}
+
+				rule2, _ := proto.GetExtension(opt, E_Rule2)
+				if rule, ok := rule2.(*Rule2); ok && rule != nil {
+					res = rule.GetType()
+				}
+
+				content += fmt.Sprintln(f.Name().String(), res)
 			}
 
 			m.OverwriteGeneratorFile("sample.txt", content)
